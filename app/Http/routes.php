@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('accueil');
+    return view('index');
 });
+
+Route::post('/creation',[
+    'uses'=> 'OffresController@creationoffre',
+    'as'=>'creation'
+]);
