@@ -9,10 +9,21 @@ use Illuminate\http\Request;
 
 class OffresController extends Controller
     {
-        public function recupererIndex()
+        public function recupererIndex($auteur =null)
         {
-            $offres=Offre::orderBy('created_at', 'desc')->get();
-           // $offres=Offre::all();
+            if(!is_null($auteur))
+            {
+                $auteur_de_offre=Auteur::where('nom',$auteur)->first();
+                if($auteur_de_offre)
+                {
+                    $offres= $auteur_de_offre->offres()->orderBy('created_at','desc')->paginate(6);
+                }
+            }
+            else{
+                $offres=Offre::orderBy('created_at', 'desc')->paginate(6);
+                // $offres=Offre::all();
+
+            }
             return view('index',[
                 'offres'=>$offres
             ]);

@@ -77,3 +77,14 @@ header nav a:hover {
     width: 50%;
     text-align: center;
 }
+
+p {
+    word-wrap: break-word;
+}
+.offre .caption {
+    max-height: 160px;
+    overflow-y: scroll;
+}
+article {
+    min-height: 201px !important;
+}

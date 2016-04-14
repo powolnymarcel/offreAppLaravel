@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/',[
+//Le pts d'interogation indique que le param est optionnel 
+Route::get('/{auteur?}',[
     'uses'=>'OffresController@recupererIndex',
     'as'=>'index'
 ]);
