@@ -83,8 +83,19 @@ p {
 }
 .offre .caption {
     max-height: 160px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 article {
     min-height: 201px !important;
+}
+.thumbnail {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: block;
+    line-height: 1.42857;
+    margin-bottom: 20px;
+    min-height: 200px;
+    padding: 4px;
+    transition: border 0.2s ease-in-out 0s;
 }
