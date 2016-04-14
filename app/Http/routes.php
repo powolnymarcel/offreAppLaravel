@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[
+    'uses'=>'OffresController@recupererIndex',
+    'as'=>'index'
+]);
 
 Route::post('/creation',[
     'uses'=> 'OffresController@creationoffre',
     'as'=>'creation'
+]);
+
+Route::get('/supprimer/{offre_id}',[
+    'uses'=>'OffresController@supprimerOffre',
+    'as'=>'supprimer'
 ]);
