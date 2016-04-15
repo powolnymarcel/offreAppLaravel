@@ -6,22 +6,18 @@
                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
                         class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Les offres</a>
+            <a class="navbar-brand" href="http://localhost/quoteAppLaravel/public/">Les offres</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{route('admin.login')}}"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+            @if(Auth::check())
+                    <li><a href="{{route('admin.logout')}}"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
 
-                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
-                    </ul>
-                </li>
+                @endif
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
