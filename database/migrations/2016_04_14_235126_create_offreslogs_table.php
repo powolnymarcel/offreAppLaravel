@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuteursTable extends Migration
+class CreateOffreslogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateAuteursTable extends Migration
      */
     public function up()
     {
-        Schema::create('auteurs', function (Blueprint $table) {
+        Schema::create('offreslog', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nom');
-            $table->string('email');
+            $table->string('auteur');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateAuteursTable extends Migration
      */
     public function down()
     {
-        Schema::drop('auteurs');
+        Schema::drop('offreslog');
     }
 }

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Auteur;
 use App\Offre;
 use Illuminate\http\Request;
-
+use App\Events\OffreCree;
+use Illuminate\Support\Facades\Event;
 
 class OffresController extends Controller
     {
@@ -33,7 +34,8 @@ class OffresController extends Controller
         {
             $this->validate($request,[
                 'auteur'=>'required|max:60|alpha',
-                'offre' => 'required|max:350'
+                'offre' => 'required|max:350',
+                'email' => 'required|email'
             ]);
 
             $auteurInput = ucfirst($request['auteur']);
@@ -47,6 +49,7 @@ class OffresController extends Controller
             {
                 $auteur=new Auteur();
                 $auteur->nom=$auteurInput;
+                $auteur->email=$request['email'];
                 $auteur->save();
             }
 
@@ -57,6 +60,9 @@ class OffresController extends Controller
             // On va donc dans le modele auteur.php chercher la fonction offres
             //L'action save va prendre l'offre en parametre et pourra la stocker en BDD avec la bonne relation
             $auteur->offres()->save($offre);
+
+            Event::fire(new OffreCree($auteur));
+
 
             return redirect()->route('index')->with([
                 'success'=>'Offre enregistrée']);

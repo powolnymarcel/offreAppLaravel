@@ -68,6 +68,10 @@
                     <input class="input-group" type="text" name="auteur" id="auteur" placeholder="Votre nom">
                 </div>
                 <div class="form-group">
+                    <label for="email">Votre email</label>
+                    <input class="input-group" type="email" name="email" id="email" placeholder="Votre email">
+                </div>
+                <div class="form-group">
                     <label for="offre">Votre offre</label>
                     <textarea class="input-group" name="offre" id="offre" cols="30" rows="10"></textarea>
                 </div>
