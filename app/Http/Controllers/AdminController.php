@@ -9,14 +9,9 @@ class AdminController extends Controller
     public function getLogin()
     {
 
-        if(Auth::check()){
-            $auteurs= Auteur::all();
-            return view('admin.dashboard',['auteurs'=>$auteurs]);
-        }
-        else{
+
             return view('admin.login');
 
-        }
     }
 
 
