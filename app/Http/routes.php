@@ -42,15 +42,30 @@ Route::post('/admin/login',[
     'as'=>'admin.login'
 ]);
 
+//On protege soit une par une ...
+//Route::get('/admin/dashboard',[
+//    'uses'=>'AdminController@getDashboard',
+//    'as'=>'admin.dashboard',
+//    'middleware'=>'auth'
+//]);
+//Route::get('/admin/les-offres',function(){
+//    return view('admin.lesOffres');
+//})->middleware('auth');
+
+//Soit en groupe :)
+
+Route::group(['middleware'=>'auth'],function(){
 
 
-Route::get('/admin/dashboard',[
-    'uses'=>'AdminController@getDashboard',
-    'as'=>'admin.dashboard',
-    'middleware'=>'auth'
-]);
+    Route::get('/admin/dashboard',[
+        'uses'=>'AdminController@getDashboard',
+        'as'=>'admin.dashboard'
+    ]);
+    Route::get('/admin/les-offres',function(){
+        return view('admin.lesOffres');
+    });
 
-
+});
 
 
 
