@@ -39,8 +39,11 @@ Route::get('/admin/login',[
 ]);
 Route::post('/admin/login',[
     'uses'=>'AdminController@postLogin',
-    'as'=>'admin.login'
+    'as'=>'admin.login',
+    'middleware'=>'auth'
 ]);
+
+
 
 Route::get('/admin/dashboard',[
     'uses'=>'AdminController@getDashboard',

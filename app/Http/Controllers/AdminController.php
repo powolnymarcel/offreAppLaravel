@@ -22,10 +22,12 @@ class AdminController extends Controller
 
     public function getDashboard(){
 
-
-        if(!Auth::check()){
-            return redirect()->back();
-        }
+            //Permet de voir si l'utilisateur est autorisé à voir la vue
+        //Façon simple mais qui peut vite devennir répetitive donc le mieux c'est d'utiliser un middleware
+       // //Un middlerware est un filtre dans lequel chaques requetes doit passer avant d'etre "dirigée vers par la route"
+       // if(!Auth::check()){
+       //     return redirect()->back();
+       // }
 
         $auteurs= Auteur::all();
         return view('admin.dashboard',['auteurs'=>$auteurs]);
