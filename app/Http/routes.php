@@ -26,3 +26,9 @@ Route::get('/supprimer/{offre_id}',[
     'uses'=>'OffresController@supprimerOffre',
     'as'=>'supprimer'
 ]);
+
+
+Route::get('/recuemail/{auteur_nom}',[
+    'uses'=>'OffresController@receptionMailCallback',
+    'as'=>'mail_callback'
+]);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Auteur;
 use App\Offre;
+use App\logAuteur;
 use Illuminate\http\Request;
 use App\Events\OffreCree;
 use Illuminate\Support\Facades\Event;
@@ -87,7 +88,26 @@ class OffresController extends Controller
                 //On redirige vers la vue index avec le message
              return redirect()->route('index')->with(['success'=>$message]);
         }
-    }
+
+
+
+
+        public function receptionMailCallback($auteur_nom){
+
+            $log_auteur= new logAuteur();
+            $log_auteur->auteur=$auteur_nom;
+            $log_auteur->save();
+            
+           return view('email.callback',
+               ['auteur'=>$auteur_nom]);
+        }
+
+
+
+
+
+
+}
 
 
 

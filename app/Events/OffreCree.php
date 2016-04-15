@@ -17,7 +17,8 @@ class OffreCree extends Event
      */
     public function __construct($auteur)
     {
-        $this->auteur=$auteur->nom;
+        $this->auteur_nom=$auteur->nom;
+        $this->auteur_email=$auteur->email;
     }
 
     /**

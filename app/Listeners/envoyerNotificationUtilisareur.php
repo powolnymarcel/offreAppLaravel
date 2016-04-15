@@ -3,11 +3,11 @@
 namespace App\Listeners;
 
 use App\Events\OffreCree;
-use App\Offreslog;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class CreerLeLogDeLoffre
+class envoyerNotificationUtilisareur
 {
     /**
      * Create the event listener.
@@ -27,10 +27,14 @@ class CreerLeLogDeLoffre
      */
     public function handle(OffreCree $event)
     {
-      $auteur = $event->auteur_nom;
+        $auteur = $event->auteur_nom;
+        $email= $event->auteur_email;
 
-        $log=new Offreslog();
-        $log->auteur=$auteur;
-        $log->save();
+        Mail::send(
+            'email.notificationUtilisateur',['nom'=>$auteur],function($message) use($email,$auteur){
+            $message->from('admin@lesoffres.com');
+            $message->to($email,$auteur);
+            $message->subject('Merci pour votre offre');
+        });
     }
 }

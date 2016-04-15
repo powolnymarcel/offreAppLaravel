@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\OffreCree' => [
             'App\Listeners\CreerLeLogDeLoffre',
+            'App\Listeners\envoyerNotificationUtilisareur'
         ],
     ];
 
