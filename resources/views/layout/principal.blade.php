@@ -10,7 +10,6 @@
     @yield('styles')
 </head>
 <body>
-
     <section class="container">
         @include('includes.navigation')
         @yield('contenu')
